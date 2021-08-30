@@ -9,7 +9,7 @@ badges:
 
 - **MERUSAK:** Pengecekan untuk mengetahui jika _tag_ HTML harus di perlakukan seperti elemen kustom sekarang dilakukan pada saat kompilasi templat, dan harus dilakukan melalui opsi kompiler bukan pada konfigurasi _runtime_
 - **MERUSAK** Penggunaan properti khusus `is` dibatasi untuk _tag_ `<component>` saja.
-- **BARU** Terdapat _directive_ baru `v-is` untuk mendukung kasus penggunaan pada Vue versi 2.x dimana `is` digunakan pada elemen bawaan untuk mengatasi masalah batasan penguraian pada elemen bawaan HTML.
+- **NEW:** To support 2.x use cases where `is` was used on native elements to work around native HTML parsing restrictions, prefix the value with `vue:` to resolve it as a Vue component.
 
 ## Elemen Kustom Otonom
 

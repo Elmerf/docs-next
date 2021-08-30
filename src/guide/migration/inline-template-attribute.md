@@ -3,15 +3,15 @@ badges:
   - breaking
 ---
 
-# Inline Template Attribute <MigrationBadges :badges="$frontmatter.badges" />
+# Atribut Templat Inline <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Gambaran Umum
 
-Support for the [inline-template feature](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates) has been removed.
+Dukungan untuk [fitur inline-template](https://vuejs.org/v2/guide/components-edge-cases.html#Inline-Templates) telah dihapuskan.
 
-## 2.x Syntax
+## 2.x Sintaksis
 
-In 2.x, Vue provided the `inline-template` attribute on child components to use its inner content as its template instead of treating it as distributed content.
+Di 2.x, Vue menyediakan atribut `inline-template` pada komponen anak/turunan. Komponen turunan ini menggunakan konten didalamnya sebagai templat komponen daripada memperlakukannya sebagai konten terdistribusi.
 
 ```html
 <my-component inline-template>
@@ -22,19 +22,19 @@ In 2.x, Vue provided the `inline-template` attribute on child components to use 
 </my-component>
 ```
 
-## 3.x Syntax
+## 3.x Sintaksis
 
-This feature will no longer be supported.
+Fitur ini tidak lagi didukung
 
-## Migration Strategy
+## Strategi dalam Migrasi
 
-Most of the use cases for `inline-template` assumes a no-build-tool setup, where all templates are written directly inside the HTML page.
+Banyak penggunaan `inline-template` diasumsikan menggunakan sebuah no-build-tool, dimana semua templat ditulis langsung ke dalam halaman HTML.
 
 [Migration build flag: `COMPILER_INLINE_TEMPLATE`](migration-build.html#compat-configuration)
 
-### Option #1: Use `<script>` tag
+### Pilihan #1: menggunakan tag `<script>`
 
-The most straightforward workaround in such cases is using `<script>` with an alternative type:
+Cara paling mudah adalah dalam kasus ini adalah menggunakan `<script>` dengan tipe alternatif:
 
 ```html
 <script type="text/html" id="my-comp-template">
@@ -42,7 +42,7 @@ The most straightforward workaround in such cases is using `<script>` with an al
 </script>
 ```
 
-And in the component, target the template using a selector:
+Dan dalam komponen, target templat tersebut menggunakan sebuah selector:
 
 ```js
 const MyComp = {
@@ -51,11 +51,11 @@ const MyComp = {
 }
 ```
 
-This doesn't require any build setup, works in all browsers, is not subject to any in-DOM HTML parsing caveats (e.g. you can use camelCase prop names), and provides proper syntax highlighting in most IDEs. In traditional server-side frameworks, these templates can be split out into server template partials (included into the main HTML template) for better maintainability.
+Opsi ini tidak memerlukan suatu build setup, bekerja di semua peramban, bukan subjek dari suatu in-DOM HTML parsing caveats (contoh Anda dapat menggunakan camelCase pada penamaan prop), dan memberikan sorotan sintaksis yang benar pada kebanyakan IDEs. Pada kerangka kerja sisi-peladen tradisional, template ini dapat dipisah menjadi partisi templat peladen (termasuk templat HTML utama) agar mempermudah dalam pemeliharaan.
 
-### Option #2: Default Slot
+### Pilihan #2: Default Slot
 
-A component previously using `inline-template` can also be refactored using the default slot - which makes the data scoping more explicit while preserving the convenience of writing child content inline:
+Komponen yang sebelumnya menggunakan `inline-template` juga dapat direfaktor menggunakan default slot - Yang mana membuat jangkauan data menjadi lebih jelas sementara menjaga kemudahanan dalam menulis konten anak secara inline:
 
 ```html
 <!-- 2.x Syntax -->
@@ -69,7 +69,7 @@ A component previously using `inline-template` can also be refactored using the 
 </my-comp>
 ```
 
-The child, instead of providing no template, should now render the default slot\*:
+Anak tersebut, daripada menyediakan templat kosong, sekarang seharusnya menampilkan default slot\*:
 
 ```html
 <!--
@@ -81,4 +81,4 @@ The child, instead of providing no template, should now render the default slot\
 </template>
 ```
 
-> - Note: In 3.x, slots can be rendered as the root with native [fragments](/guide/migration/fragments) support!
+> - Catatan: di 3.x, slots juga dapat ditampilkan sebagai root bersamaan dengan dukungan native [fragments](/guide/migration/fragments)!
