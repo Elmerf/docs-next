@@ -3,13 +3,13 @@ badges:
   - breaking
 ---
 
-# Events API <MigrationBadges :badges="$frontmatter.badges" />
+# API Events <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Gambaran Umum
 
-`$on`, `$off` and `$once` instance methods are removed. Component instances no longer implement the event emitter interface.
+_Method_ `$on`, `$off` dan `$once` dihapus. Objek aplikasi tidak perlu lagi untuk mengimplementasikan antarmuka _event emitter_.
 
-## 2.x Syntax
+## Sintaks Vue versi 2.x
 
 In 2.x, a Vue instance could be used to trigger handlers attached imperatively via the event emitter API (`$on`, `$off` and `$once`). This could be used to create an _event bus_ to create global event listeners used across the whole application:
 
@@ -52,11 +52,11 @@ export default {
 }
 ```
 
-## 3.x Update
+## Pembaruan Vue versi 3.x
 
 We removed `$on`, `$off` and `$once` methods from the instance completely. `$emit` is still a part of the existing API as it's used to trigger event handlers declaratively attached by a parent component.
 
-## Migration Strategy
+## Strategi Migrasi
 
 [Migration build flag: `INSTANCE_EVENT_EMITTER`](migration-build.html#compat-configuration)
 
@@ -79,7 +79,7 @@ createApp(App, {
 
 The event bus pattern can be replaced by using an external library implementing the event emitter interface, for example [mitt](https://github.com/developit/mitt) or [tiny-emitter](https://github.com/scottcorgan/tiny-emitter).
 
-Example:
+Contoh:
 
 ```js
 // eventBus.js
@@ -93,7 +93,11 @@ export default {
 }
 ```
 
-This provides the same event emitter API as in Vue 2.
+Cara tersebut menghasilkan API _event emitter_ yang sama seperti pada Vue 2.
+
+Cara tersebut mungkin akan didukung juga pada _build_ kompatibel dari Vue 3.
+
+[_Migration build flag_: `INSTANCE_EVENT_EMITTER`](migration-build.html#compat-configuration)
 
 In most circumstances, using a global event bus for communicating between components is discouraged. While it is often the simplest solution in the short term, it almost invariably proves to be a maintenance headache in the long term. Depending on the circumstances, there are various alternatives to using an event bus:
 
