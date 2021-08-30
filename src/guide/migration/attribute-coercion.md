@@ -120,7 +120,7 @@ Pada Vue versi 3.x, penghapusan atribut harus dinyatakan secara eksplisit dengan
       <td><code>"true"</code></td>
     </tr>
     <tr>
-      <td><code>null</code>, <code>'false'</code></td>
+      <td><code>null</code>, <code>false</code>, <code>'false'</code></td>
       <td><code>false</code>, <code>'false'</code></td>
       <td><code>"false"</code></td>
     </tr>

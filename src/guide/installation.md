@@ -97,7 +97,12 @@ Proyek Vue dapat diatur secara cepat dengan Vite dengan menjalankan perintah ber
 Dengan npm:
 
 ```bash
-$ npm init vite <project-name> -- --template vue
+# npm 6.x
+$ npm init vite@latest <project-name> --template vue
+
+# npm 7+, extra double-dash is needed:
+$ npm init vite@latest <project-name> -- --template vue
+
 $ cd <project-name>
 $ npm install
 $ npm run dev

@@ -486,6 +486,9 @@ module.exports = {
       }
     ],
     repo: 'vuejs/docs',
+    editLinks: true,
+    editLinkText: 'Edit this on GitHub!',
+    lastUpdated: 'Last updated',
     editLinks: false,
     editLinkText: 'Sunting di GitHub!',
     lastUpdated: 'Pembaruan terakhir',
