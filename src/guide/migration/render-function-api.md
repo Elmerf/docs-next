@@ -3,28 +3,28 @@ badges:
   - breaking
 ---
 
-# Render Function API <MigrationBadges :badges="$frontmatter.badges" />
+# API Fungsi Render <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Gambaran Umum
 
-This change will not affect `<template>` users.
+Perubahan ini tidak berdampak pada pengguna `<template>`.
 
-Here is a quick summary of what has changed:
+Berikut adalah ringkasan sekilas apa yang telah berubah:
 
-- `h` is now globally imported instead of passed to render functions as an argument
-- render function arguments changed to be more consistent between stateful and functional components
-- VNodes now have a flat props structure
+- `h` sekarang terimpor secara global daripada dilewatkan ke fungsi render sebagai argumen
+- argumen fungsi render diubah menjadi lebih konsisten antara komponen-komponen stateful dan functional
+- VNodes sekarang mempunyai struktur flat props
 
-For more information, read on!
+Untuk informasi lebih lanjut, baca seterusnya!
 
-## Render Function Argument
+## Argumen Fungsi Render
 
-### 2.x Syntax
+### 2.x Sintaksis
 
-In 2.x, the `render` function would automatically receive the `h` function (which is a conventional alias for `createElement`) as an argument:
+Pada 2.x, fungsi `render` akan secara otomatis  menerima fungsi `h` (yang merupakan sebuah alias konvensional untuk `createElement`) sebagai sebuah argumen:
 
 ```js
-// Vue 2 Render Function Example
+// Contoh Vue 2 Fungsi Render
 export default {
   render(h) {
     return h('div')
@@ -32,12 +32,12 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x Sintaksis
 
-In 3.x, `h` is now globally imported instead of being automatically passed as an argument.
+Pada 3.x, `h` sekarang secara global diimpor daripada secara otomatis dilewatkan sebagai sebuah argumen.
 
 ```js
-// Vue 3 Render Function Example
+// Contoh Vue 3 Fungsi Render
 import { h } from 'vue'
 
 export default {
@@ -47,14 +47,14 @@ export default {
 }
 ```
 
-## Render Function Signature Change
+## Perubahaan Signature Fungsi Render
 
-### 2.x Syntax
+### 2.x Sintaksis
 
-In 2.x, the `render` function automatically received arguments such as `h`.
+Pada 2.x, fungsi `render` secara otomatis menerima argumen seperti `h`.
 
 ```js
-// Vue 2 Render Function Example
+// Contoh Vue 2 Fungsi Render
 export default {
   render(h) {
     return h('div')
@@ -62,9 +62,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x Sintaksis
 
-In 3.x, since the `render` function no longer receives any arguments, it will primarily be used inside of the `setup()` function. This has the added benefit of gaining access to reactive state and functions declared in scope, as well as the arguments passed to `setup()`.
+Pada 3.x, dikarenakan fungsi `render` tidak lagi menerima argumen apapun, Fungsi ini akan secara primer digunakan di dalam fungsi `setup()`. Hal ini akan memberikan keuntungan dalam mendapatkan akses ke keadaan reaktif dan fungsi-fungsi dideklarasikan di scope, sama baiknya argumen dilewatkan ke `setup()`.
 
 ```js
 import { h, reactive } from 'vue'
@@ -79,7 +79,7 @@ export default {
       state.count++
     }
 
-    // return the render function
+    // return fungsi render
     return () =>
       h(
         'div',
@@ -92,13 +92,13 @@ export default {
 }
 ```
 
-For more information on how `setup()` works, see our [Composition API Guide](/guide/composition-api-introduction.html).
+Untuk informasi mengenai bagaimana `setup()` bekerja, baca [Paduan Composition API](/guide/composition-api-introduction.html).
 
-## VNode Props Format
+## Format VNode Props
 
-### 2.x Syntax
+### 2.x Sintaksis
 
-In 2.x, `domProps` contained a nested list within the VNode props:
+Pada 2.x, `domProps` berisikan sebuah daftar bersarang di dalam VNode props:
 
 ```js
 // 2.x
@@ -114,12 +114,12 @@ In 2.x, `domProps` contained a nested list within the VNode props:
 }
 ```
 
-### 3.x Syntax
+### 3.x Sintaksis
 
-In 3.x, the entire VNode props structure is flattened. Using the example from above, here is what it would look like now.
+Pada 3.x, semua struktru VNode props telah diratakan. Menggunakan contoh di atas, berikut ini bagaimana sintaksis tampak.
 
 ```js
-// 3.x Syntax
+// 3.x Sintaksis
 {
   class: ['button', { 'is-outlined': isOutlined }],
   style: [{ color: '#34495E' }, { backgroundColor: buttonColor }],
@@ -130,11 +130,11 @@ In 3.x, the entire VNode props structure is flattened. Using the example from ab
 }
 ```
 
-## Registered Component
+## Komponen Teregistrasi
 
-### 2.x Syntax
+### 2.x Sintaksis
 
-In 2.x, when a component has been registered, the render function would work well when passing the component's name as a string to the first argument:
+Pada 2.x, ketika sebuah komponen telah teregistrasi, fungsi render akan bekerja dengan baik ketika melewatkan nama komponen sebagai sebuah string ke argumen pertama:
 
 ```js
 // 2.x
@@ -158,9 +158,9 @@ export default {
 }
 ```
 
-### 3.x Syntax
+### 3.x Sintaksis
 
-In 3.x, with VNodes being context-free, we can no longer use a string ID to implicitly lookup registered components. Instead, we need to use an imported `resolveComponent` method:
+Pada 3.x, dengan VNodes menjadi bebas konteks, kita tidak lagi dapat menggunakan sebuah ID string untuk secara implisit mencari komponen-komponen yang teregistrasi. Dengan demikian, kita memerlukan sebuah method `resolveComponent` yang diimpor:
 
 ```js
 // 3.x
@@ -174,20 +174,20 @@ export default {
 }
 ```
 
-For more information, see [The Render Function Api Change RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
+Untuk informasi lebih lanjut, lihat [Api Fungsi Render mengubah RFC](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0008-render-function-api-change.md#context-free-vnodes).
 
-## Migration Strategy
+## Strategi Migrasi
 
 [Migration build flag: `RENDER_FUNCTION`](migration-build.html#compat-configuration)
 
-### Library Authors
+### Pencipta Library
 
-`h` being globally imported means that any library that contains Vue components will include `import { h } from 'vue'` somewhere. As a result, this creates a bit of overhead since it requires library authors to properly configure the externalization of Vue in their build setup:
+`h` menjadi secara global diimpor berarti library apa saja yang berisi komponen-komponen Vue akan memasukkan `import { h } from 'vue'` di suatu tempat. Hasilnya, hal ini membuat sedikit pengaturan tambahan dikarenakan memerlukan pencipta library untuk secara benar mengkonfigurasikan eksternalisasi dari Vue di build setup mereka:
 
-- Vue should not be bundled into the library
-- For module builds, the import should be left alone and be handled by the end user bundler
-- For UMD / browser builds, it should try the global Vue.h first and fallback to require calls
+- Vue tidak boleh dibundel ke dalam library
+- Untuk module builds, import harus dibiarkan sendiri dan ditangani oleh bundler pengguna akhir
+- Untuk UMD / browser builds, harus mencoba global Vue.h dahulu dan fallback memerlukan calls
 
-## Next Steps
+## Langkah Berikutnya
 
-See [Render Function Guide](/guide/render-function) for more detailed documentation!
+Lihat [Panduan Fungsi Render](/guide/render-function) untuk dokumentasi secara lebih detail!
