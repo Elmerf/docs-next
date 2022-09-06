@@ -47,15 +47,15 @@ Mirip dengan properti, kejadian yang dapat diteruskan oleh komponen dapat didefi
 </script>
 ```
 
-Opsi tersebut juga menerima sebuah objek, yang memperbolehkan pengembang untuk menetapkan pemeriksa untuk argumen yang diberikan pada _event_ yang diteruskan, mirip dengan pemeriksa pada definisi `props`. 
+Opsi tersebut juga menerima sebuah objek, yang memperbolehkan pengembang untuk menetapkan pemeriksa untuk argumen yang diberikan pada _event_ yang diteruskan, mirip dengan pemeriksa pada definisi `props`.
 
 Untuk informasi lebih lanjut mengenai hal ini, silahkan baca [dokumentasi API untuk fitur ini](../../api/options-data.md#emits).
 
 ## Strategi Migrasi
 
-Sangat disarankan bagi Anda untuk mendokumentasikan seluruh _event_ yang diteruskan oleh setiap komponen yang Anda buat menggunakan `emits`.
+It is highly recommended that you document all the events emitted by each of your components using `emits`.
 
-Hal tersebut menjadi sangat penting karena [penghapusan pengubah .native](./v-on-native-modifier-removed.md). Setiap _listener_ untuk _event_ yang tidak dideklarasikan menggunakan `emits` akan diikutsertakan pada `$attrs` milik komponen, yang secara umum akan terikat pada _node_ inti dari komponen. 
+Hal tersebut menjadi sangat penting karena [penghapusan pengubah .native](./v-on-native-modifier-removed.md). Setiap _listener_ untuk _event_ yang tidak dideklarasikan menggunakan `emits` akan diikutsertakan pada `$attrs` milik komponen, yang secara umum akan terikat pada _node_ inti dari komponen.
 
 ### Contoh
 

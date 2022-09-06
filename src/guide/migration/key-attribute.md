@@ -3,7 +3,7 @@ badges:
   - breaking
 ---
 
-# Atribut `key` <MigrationBadges :badges="$frontmatter.badges" />
+# `key` Attribute <MigrationBadges :badges="$frontmatter.badges" />
 
 ## Gambaran Umum
 

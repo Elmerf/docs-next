@@ -100,7 +100,7 @@ Sekarang kita telah mempelajari hal baru. Atribut `v-bind` yang telah Anda lihat
 
 ## Menangani Inputan Pengguna
 
-Untuk memungkinkan pengguna berinteraksi dengan aplikasi Anda, kita dapat menggunakan _directive_ `v-on` untuk melampirkan _event listener_ yang menjalankan suatu fungsi/metode pada _instance_ Vue kita:
+To let users interact with our app, we can use the `v-on` directive to attach event listeners that invoke methods on our instances:
 
 ```html
 <div id="event-handling">
@@ -223,12 +223,16 @@ Sistem komponen merupakan konsep penting lainnya pada Vue, karena abstraksinya m
 Di Vue, pada dasarnya, komponen adalah _instance_ Vue yang memiliki opsi yang telah dideklarasikan sebelumnya. Mendaftarkan komponen pada Vue sangatlah mudah: kita membuat objek komponen seperti yang kita lakukan pada objek `App` dan kita mendeklarasikannya pada opsi `components` induknya:
 
 ```js
-// Membuat aplikasi Vue
-const app = Vue.createApp(...)
+const TodoItem = {
+  template: `<li>This is a todo</li>`
+}
 
-// Mendefinisikan komponen baru bernama todo-item
-app.component('todo-item', {
-  template: `<li>Ini adalah todo</li>`
+// Create Vue application
+const app = Vue.createApp({
+  components: {
+    TodoItem // Register a new component
+  },
+  ... // Other properties for the component
 })
 
 // Mount aplikasi Vue

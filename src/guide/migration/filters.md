@@ -38,7 +38,7 @@ Sebagai contoh:
 </script>
 ```
 
-Walaupun terlihat praktis, namun _filter_ membutuhkan sebuah sintaks khusus yang bertentangan dengan asumsi bahwa seluruh ekspresi yang terdapat dalam kurung kurawal merupakan JavaScript murni, dimana hal tersebut akan membutuhkan biaya belajar dan implementasi.
+While this seems like a convenience, it requires a custom syntax that breaks the assumption of expressions inside curly braces being "just JavaScript," which has both learning and implementation costs.
 
 ## Pembaruan Vue versi 3.x
 

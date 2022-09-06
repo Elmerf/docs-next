@@ -92,8 +92,8 @@ Berikut ini adalah daftar perubahan terkini dari 2.x:
 
 ### Elemen Kustom
 
-- [Mengecek elemen kustom sekarang dilakukan saat kompilasi templat](/guide/migration/custom-elements-interop.html)
-- [Penggunaan spesial `is` prop dibatasi hanya dapat dipesan oleh `<component>` tag](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
+- [Custom element checks are now performed during template compilation](/guide/migration/custom-elements-interop.html)
+- [Special `is` attribute usage is restricted to the reserved `<component>` tag only](/guide/migration/custom-elements-interop.html#customized-built-in-elements)
 
 ### Beberapa Perubahan Lain
 
@@ -166,7 +166,7 @@ Kami sedang mengerjakan versi terbaru dari Devtools dengan UI yang baru serta re
 
 ### Dukungan IDE
 
-Direkomendasikan untuk memakai [VSCode](https://code.visualstudio.com/) dengan ekstensi resmi kami [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), yang menyediakan dukungan  IDE secara komprehensif untuk Vue 3.
+It is recommended to use [VSCode](https://code.visualstudio.com/) with our official extension [Volar](https://github.com/johnsoncodehk/volar), which provides comprehensive IDE support for Vue 3.
 
 ### Proyek-Proyek Lain
 

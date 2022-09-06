@@ -52,11 +52,11 @@ Vue.config.ignoredElements = ['tombol-plastik']
   ]
   ```
 
-- Apabila Anda menggunakan kompilasi _template_ secara _on-the-fly_, teruskan opsi melalui `app.config.isCustomElement`:
+- If using on-the-fly template compilation, pass it via `app.config.compilerOptions.isCustomElement`:
 
   ```js
-  const app = Vue.createApp({})
-  app.config.isCustomElement = tag => tag === 'tombol-plastik'
+   const app = Vue.createApp({})
+  app.config.compilerOptions.isCustomElement = tag => tag === 'plastic-button'
   ```
 
   Perlu diingat bahwa konfigurasi waktu eksekusi hanya mempengaruhi kompilasi _template_ pada waktu eksekusi - konfigurasi tersebut tidak akan mempengaruhi _template_ yang sudah dikompilasi sebelumnya.
@@ -125,6 +125,9 @@ Dengan diubahnya cara kerja `is`, seubuah prefix `vue:` sekarang wajib digunakan
 
 :::warning
 Fungsi `v-is` mengharapkan sebuah ikatan dinamis `:is` seperti pada Vue versi 2.x - sehingga untuk menampilkan sebuah komponen berdasarkan nama yang sudah didaftarkan, nilai dari `v-is` harus merupakan sebuah _string literal_ JavaScript:
+
+
+- Replace `config.ignoredElements` with either `vue-loader`'s `compilerOptions` (with the build step) or `app.config.compilerOptions.isCustomElement` (with on-the-fly template compilation)
 
 ```html
 <!-- Salah, tidak ada yang akan ditampilkan -->

@@ -107,7 +107,11 @@ export function render() {
 
 Hal tersebut menandakan bahwa komponen `Transition` hanya akan diimpor apabila aplikasi yang Anda buat menggunakan komponen tersebut. Dengan kata lain, apabila aplikasi yang Anda buat tidak menggunakan komponen `Transition`, kode yang mendukung fitur tersebut tidak akan ada pada kode akhir.
 
+<<<<<<< HEAD
 Dengan _tree-shaking_ global, pengguna hanya akan "membayar" untuk fitur yang benar-benar mereka gunakan. Selain itu, karena fitur yang tidak wajib tidak akan menambah ukuran kode program pada aplikasi yang tidak menggunakan fitur tersebut, ukuran _framework_ tidak lagi menjadi masalah apabila terdapat penambahan fitur utama baru pada versi-versi selanjutnya. 
+=======
+With global tree-shaking, the users only “pay” for the features they actually use. Even better, knowing that optional features won't increase the bundle size for applications not using them, framework size has become much less a concern for additional core features in the future, if at all.
+>>>>>>> beecaad1bfd9fa3716b504a5a6d526c23b98ad4d
 
 ::: warning Penting
 Keuntungan di atas hanya berlaku bagi kode program yang memanfaatkan [modul ES](/guide/installation.html#explanation-of-different-builds) yang dibangun menggunakan _bundler_ yang mendukung fitur _tree-shaking_ - kode program yang dibangun menggunakan modul UMD tetap memasukkan seluruh fitur dan mengekspos seluruh variabel global dari Vue (dan kompilator tetap akan menghasilkan kode program yang sebisa mungkin menggunakan API global dibandingkan mengimpor API).

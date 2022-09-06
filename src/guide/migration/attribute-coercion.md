@@ -141,4 +141,4 @@ Pada Vue versi 3.x, penghapusan atribut harus dinyatakan secara eksplisit dengan
 [Migration build flags:](migration-build.html#compat-configuration)
 
 - `ATTR_FALSE_VALUE`
-- `ATTR_ENUMERATED_COERSION`
+- `ATTR_ENUMERATED_COERCION`

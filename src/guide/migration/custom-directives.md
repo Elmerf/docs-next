@@ -15,7 +15,11 @@ Additionally, the `expression` string is no longer passed as part of the `bindin
 
 Lanjutkan membaca untuk penjelasan lebih lanjut.
 
-## Sintaks Vue versi 2.x
+- **bind** - Called once the directive is bound to the element. Called only once.
+- **inserted** - Called once the element is inserted into the parent DOM.
+- **update** - This hook is called when the element updates, but children haven't been updated yet.
+- **componentUpdated** - This hook is called once the component and the children have been updated.
+- **unbind** - This hook is called once the directive is removed. Also called only once.
 
 Pada Vue versi 2, _custom directives_ dibuat menggunakan _hook-hook_ berikut untuk mengacu pada salah satu bagian dari siklus hidup komponen, dimana semuanya opsional:
 
@@ -48,8 +52,8 @@ Namun pada Vue versi 3, kami telah membuat API yang lebih kohesif untuk _custom 
 - **created** - new! This is called before the element's attributes or event listeners are applied.
 - bind → **beforeMount**
 - inserted → **mounted**
-- **beforeUpdate**: Baru! _Hook_ ini akan dipanggil sebelum elemen diperbarui, mirip dengan _hook_ pada siklus hidup komponen.
-- update → Dihapus! Ada terlalu banyak persamaan dengan `updated`, sehingga _hook_ ini berlebihan. Mohon gunakan `updated`.
+- **beforeUpdate**: new! This is called before the element itself is updated, much like the component lifecycle hooks.
+- update → removed! There were too many similarities to `updated`, so this is redundant. Please use `updated` instead.
 - componentUpdated → **updated**
 - **beforeUnmount**: Baru! Mirip dengan _hook_ pada siklus hidup komponen, _hook_ ini akan dipanggil sebelum elemen dilepaskan dari DOM.
 - unbind -> **unmounted**

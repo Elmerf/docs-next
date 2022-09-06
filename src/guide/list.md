@@ -1,16 +1,14 @@
-# List Rendering
+# _Rendering List_
 
-<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="Learn how to render lists on Vue School">Learn how to render list with a free Vue School lesson</VideoLesson>
+<VideoLesson href="https://vueschool.io/lessons/list-rendering-in-vue-3?friend=vuejs" title="Pelajari cara rendering list di Vue School">Pelajari cara melakukan _rendering_ suatu _list_ di Vue School secara gratis</VideoLesson>
 
-## Mapping an Array to Elements with `v-for`
+## Memetakan sebuah Array menjadi element menggunakan `v-for`
 
-We can use the `v-for` directive to render a list of items based on an array. The `v-for` directive requires a special syntax in the form of `item in items`, where `items` is the source data array and `item` is an **alias** for the array element being iterated on:
+Kita dapat menggunakan direktif `v-for` untuk melakukan _rendering list_ item berdasarkan array. Direktif `v-for` memerlukan sintaks khusus dalam bentuk `item in items`, yang dimana `items` adalah sumber data array dan `item` adalah sebuah **alias** untuk setiap elemen array yang di iterasi:
 
 ```html
 <ul id="array-rendering">
-  <li v-for="item in items">
-    {{ item.message }}
-  </li>
+  <li v-for="item in items">{{ item.message }}</li>
 </ul>
 ```
 
@@ -18,17 +16,17 @@ We can use the `v-for` directive to render a list of items based on an array. Th
 Vue.createApp({
   data() {
     return {
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      items: [{ message: 'Foo' }, { message: 'Bar' }],
     }
-  }
+  },
 }).mount('#array-rendering')
 ```
 
-Result:
+Hasil:
 
 <common-codepen-snippet title="v-for with Array" slug="VwLGbwa" tab="js,result" :preview="false" />
 
-Inside `v-for` blocks we have full access to parent scope properties. `v-for` also supports an optional second argument for the index of the current item.
+Didalam blok `v-for` kita memiliki akses penuh ke properti induk. `v-for` juga mendukung opsional agumen kedua untuk mendapatkan indeks item saat ini.
 
 ```html
 <ul id="array-with-index">
@@ -43,31 +41,29 @@ Vue.createApp({
   data() {
     return {
       parentMessage: 'Parent',
-      items: [{ message: 'Foo' }, { message: 'Bar' }]
+      items: [{ message: 'Foo' }, { message: 'Bar' }],
     }
-  }
+  },
 }).mount('#array-with-index')
 ```
 
-Result:
+Hasil:
 
 <common-codepen-snippet title="v-for with Array and index" slug="wvaEdBP" tab="js,result" :preview="false" />
 
-You can also use `of` as the delimiter instead of `in`, so that it is closer to JavaScript's syntax for iterators:
+Anda juga bisa menggunakan `of` sebagai pembatas pengganti `in`, yang membuat sintaks lebih mirip dengan sintaks Javascript untuk iterator:
 
 ```html
 <div v-for="item of items"></div>
 ```
 
-## `v-for` with an Object
+## `v-for` dengan menggunakan Objek
 
-You can also use `v-for` to iterate through the properties of an object.
+Anda juga dapat menggunakan direktif `v-for` untuk melakukan iterasi terhadap properti dari objek.
 
 ```html
 <ul id="v-for-object" class="demo">
-  <li v-for="value in myObject">
-    {{ value }}
-  </li>
+  <li v-for="value in myObject">{{ value }}</li>
 </ul>
 ```
 
@@ -78,28 +74,26 @@ Vue.createApp({
       myObject: {
         title: 'How to do lists in Vue',
         author: 'Jane Doe',
-        publishedAt: '2016-04-10'
-      }
+        publishedAt: '2016-04-10',
+      },
     }
-  }
+  },
 }).mount('#v-for-object')
 ```
 
-Result:
+Hasil:
 
 <common-codepen-snippet title="v-for with Object" slug="NWqLjqy" tab="js,result" :preview="false" />
 
-You can also provide a second argument for the property's name (a.k.a. key):
+Anda juga bisa memberikan argument kedua untuk properti nama (alias _key_)
 
 ```html
-<li v-for="(value, name) in myObject">
-  {{ name }}: {{ value }}
-</li>
+<li v-for="(value, name) in myObject">{{ name }}: {{ value }}</li>
 ```
 
 <common-codepen-snippet title="v-for with Object and key" slug="poJOPjx" tab="js,result" :preview="false" />
 
-And another for the index:
+Dan satu lagi untuk indeks:
 
 ```html
 <li v-for="(value, name, index) in myObject">
@@ -109,17 +103,17 @@ And another for the index:
 
 <common-codepen-snippet title="v-for with Object key and index" slug="abOaWdo" tab="js,result" :preview="false" />
 
-:::tip Note
-When iterating over an object, the order is based on the enumeration order of `Object.keys()`, which isn't guaranteed to be consistent across JavaScript engine implementations.
+:::catatan
+Ketika melakukan iterasi terhadap suatu objek, urutannya didasarkan pada urutan enumerasi `Object.keys()`, yang tidak dijamin akan konsisten di seluruh implementasi mesin Javascript.
 :::
 
-## Maintaining State
+## Pemeliharaan State
 
-When Vue is updating a list of elements rendered with `v-for`, by default it uses an "in-place patch" strategy. If the order of the data items has changed, instead of moving the DOM elements to match the order of the items, Vue will patch each element in-place and make sure it reflects what should be rendered at that particular index.
+Ketika Vue melakukan pembaruan terhadap _list_ dari elemen yang dirender melalui `v-for`, secara bawaan Vue menggunakan strategi "in-place patch". Jika urutan data telah berubah, alih-alih memindahkan elemen DOM agar sesuai dengan urutan, Vue akan menambal setiap elemen pada tempatnya dan memastikan data tersebut sesuai dengan apa yang harus dirender pada indeks tersebut.
 
-This default mode is efficient, but **only suitable when your list render output does not rely on child component state or temporary DOM state (e.g. form input values)**.
+Mode ini cukup efisien, tetapi **hanya dapat digunakan jika output _list render_ anda tidak bergantung pada _state_ komponen turunan atau _state_ DOM sementara**
 
-To give Vue a hint so that it can track each node's identity, and thus reuse and reorder existing elements, you need to provide a unique `key` attribute for each item:
+Untuk memberikan petunjuk kepada Vue agak dapat melacap setiap node, menggunakannya kembali dan menyusun ulang element yang ada, anda perlu menambahkan atribut `key` unik untuk setiap item:
 
 ```html
 <div v-for="item in items" :key="item.id">
@@ -127,21 +121,21 @@ To give Vue a hint so that it can track each node's identity, and thus reuse and
 </div>
 ```
 
-[It is recommended](/style-guide/#keyed-v-for-essential) to provide a `key` attribute with `v-for` whenever possible, unless the iterated DOM content is simple, or you are intentionally relying on the default behavior for performance gains.
+[Kami merekomendasikan](/style-guide/#keyed-v-for-essential) anda untuk menambahkan atribut `key` dengan `v-for` bila memungkinkan, kecuali jika konten DOM yang diulang sangat sederhana, atau anda sengaja menggunakan perilaku bawaan untuk meningkatkan kinerja.
 
-Since it's a generic mechanism for Vue to identify nodes, the `key` also has other uses that are not specifically tied to `v-for`, as we will see later in the guide.
+Karena ini adalah mekanisme yang umum bagi Vue untuk mengidentifikasi tiap node, `key` juga memiliki kegunaan lain yang tidak secara khusus terkait dengan `v-for`, seperti yang akan kita lihat nanti dalam panduan ini.
 
-:::tip Note
-Don't use non-primitive values like objects and arrays as `v-for` keys. Use string or numeric values instead.
-:::
+:::catatan
+Jangan gunakan nilai non-primitif seperti objek dan array sebagai `key` dari `v-for`. Gunakan string atau nilai numerik sebagai gantinya.
+:::.
 
-For detailed usage of the `key` attribute, please see the [`key` API documentation](../api/special-attributes.html#key).
+Untuk detail mengenai penggunaan atribut `key`, silahkan lihat [Dokumentasi API `key`](../api/special-attributes.html#key)
 
-## Array Change Detection
+## Deteksi perubahan pada Array
 
-### Mutation Methods
+### Method Mutation
 
-Vue wraps an observed array's mutation methods so they will also trigger view updates. The wrapped methods are:
+Vue membungkus sebuah array yang diamati menggunakan method mutasi, sehingga mereka juga akan memicu pembaruan tampilan tiap terjadi perubahan pada data. Method-method yang dibungkus adalah:
 
 - `push()`
 - `pop()`
@@ -151,23 +145,23 @@ Vue wraps an observed array's mutation methods so they will also trigger view up
 - `sort()`
 - `reverse()`
 
-You can open the console and play with the previous examples' `items` array by calling their mutation methods. For example: `example1.items.push({ message: 'Baz' })`.
+Anda dapat mencobanya dengan membuka konsol dan bermain dengan contoh array `items` berikut dengan cara memanggil metode mutasinya. Sebagai contoh: `example1.items.push({ message: 'Baz' })`.
 
-### Replacing an Array
+### Mengganti sebuah Array
 
-Mutation methods, as the name suggests, mutate the original array they are called on. In comparison, there are also non-mutating methods, e.g. `filter()`, `concat()` and `slice()`, which do not mutate the original array but **always return a new array**. When working with non-mutating methods, you can replace the old array with the new one:
+Method _mutation_, seperti namanya, method ini dapat mengubah bentuk array yang dipanggil. Sebagai perbandingan, ada juga method non-mutasi, seperti `filter()`, `concat()` dan `slice()`, yang tidak mengubah bentuk asli array tetapi **selalu mengembalikan array baru**. Saat bekerja dengan method non-mutasi, anda bisa mengganti array lama dengan array yang baru:
 
 ```js
-example1.items = example1.items.filter(item => item.message.match(/Foo/))
+example1.items = example1.items.filter((item) => item.message.match(/Foo/))
 ```
 
-You might think this will cause Vue to throw away the existing DOM and re-render the entire list - luckily, that is not the case. Vue implements some smart heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
+Anda mungkin berpikir ini akan menyebabkan Vue membuang DOM yang ada dan me*render* ulang seluruh isi _list_ - untungnya, bukan itu masalahnya. Vue mengimplementasikan beberapa heuristik cerdas untuk memaksimalkan penggunaan ulang DOM, jadi mengganti array dengan array lain yang berisi objek yang tumpang tindih adalah operasi yang sangat efisien.
 
-## Displaying Filtered/Sorted Results
+## Menampilkan hasil yang disaring / diurutkan
 
-Sometimes we want to display a filtered or sorted version of an array without actually mutating or resetting the original data. In this case, you can create a computed property that returns the filtered or sorted array.
+Terkadang kita ingin menampilkan versi array yang disaring atau diurutkan tanpa melakukan mutasi atau mengatur ualng data asli. Dalam hal ini, anda dapat membuat properti _computed_ yang mengembalikan array yang disaring atau diurutkan.
 
-For example:
+Sebagai contoh:
 
 ```html
 <li v-for="n in evenNumbers" :key="n">{{ n }}</li>
@@ -186,7 +180,7 @@ computed: {
 }
 ```
 
-In situations where computed properties are not feasible (e.g. inside nested `v-for` loops), you can use a method:
+Ketika dalam situasi dimana properti _computed_ tidak bisa digunakan (seperti didalam perulangan v-for bersarang), anda dapat menggunakan metode berikut:
 
 ```html
 <ul v-for="numbers in sets">
@@ -207,9 +201,9 @@ methods: {
 }
 ```
 
-## `v-for` with a Range
+## `v-for` dengan rentang
 
-`v-for` can also take an integer. In this case it will repeat the template that many times.
+`v-for` juga dapat mengambil integer. Dalam kasus ini, templat akan diulang sebanyak integer yang dimasukkan.
 
 ```html
 <div id="range" class="demo">
@@ -217,13 +211,13 @@ methods: {
 </div>
 ```
 
-Result:
+Hasil:
 
 <common-codepen-snippet title="v-for with a range" slug="NWqLjNY" tab="html,result" />
 
 ## `v-for` on a `<template>`
 
-Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elements. For example:
+Mirip dengan template `v-if`, Anda juga dapat menggunakan `<template>` tag dengan ` v-for` untuk membuat blok beberapa elemen. Sebagai contoh:
 
 ```html
 <ul>
@@ -234,43 +228,39 @@ Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to 
 </ul>
 ```
 
-## `v-for` with `v-if`
+## `v-for` dengan menggunakan `v-if`
 
-:::tip
-Note that it's **not** recommended to use `v-if` and `v-for` together. Refer to [style guide](../style-guide/#avoid-v-if-with-v-for-essential) for details.
+:::catatan
+Perhatikan juga bahwa anda tidak disarankan menggunakan `v-if` dan `v-for` secara bersamaan. Lihat [Panduan](../style-guide/#avoid-v-if-with-v-for-essential) untuk detainya.
 :::
 
-When they exist on the same node, `v-if` has a higher priority than `v-for`. That means the `v-if` condition will not have access to variables from the scope of the `v-for`:
+Ketika mereka ada di node yang sama, `v-if` memiliki prioritas yang lebih tinggi daripada` v-for`. Itu berarti kondisi `v-if` tidak akan memiliki akses ke variabel dari ruang lingkup` v-for`:
 
 ```html
-<!-- This will throw an error because property "todo" is not defined on instance. -->
+<!-- Ini akan melempar error karena properti "TODO" tidak didefinisikan pada instance -->
 
-<li v-for="todo in todos" v-if="!todo.isComplete">
-  {{ todo.name }}
-</li>
+<li v-for="todo in todos" v-if="!todo.isComplete">{{ todo.name }}</li>
 ```
 
-This can be fixed by moving `v-for` to a wrapping `<template>` tag:
+Hal ini dapat kita perbaiki dengan memindahkan `v-for` ke templat dengan menggunakan tag `<Template>`:
 
 ```html
 <template v-for="todo in todos" :key="todo.name">
-  <li v-if="!todo.isComplete">
-    {{ todo.name }}
-  </li>
+  <li v-if="!todo.isComplete">{{ todo.name }}</li>
 </template>
 ```
 
-## `v-for` with a Component
+## `v-for` dengan Komponen
 
-> This section assumes knowledge of [Components](component-basics.md). Feel free to skip it and come back later.
+> Pada bagian ini kami mengasumsikan anda memiliki pengetahuan tentang [komponen](component-basics.md). Jangan ragu untuk melewatkannya dan kembali lagi nanti.
 
-You can directly use `v-for` on a custom component, like any normal element:
+Anda dapat langsung menggunakan `v-for` pada komponen khusus, seperti pada elemen normal:
 
 ```html
 <my-component v-for="item in items" :key="item.id"></my-component>
 ```
 
-However, this won't automatically pass any data to the component, because components have isolated scopes of their own. In order to pass the iterated data into the component, we should also use props:
+Namun, ini tidak akan secara otomatis meneruskan data ke komponen, karena komponen telah terisolasi lingkup mereka sendiri. Untuk meneruskan data iterasi ke dalam komponen, kita juga harus menggunakan props:
 
 ```html
 <my-component
@@ -281,9 +271,9 @@ However, this won't automatically pass any data to the component, because compon
 ></my-component>
 ```
 
-The reason for not automatically injecting `item` into the component is because that makes the component tightly coupled to how `v-for` works. Being explicit about where its data comes from makes the component reusable in other situations.
+Alasan kenapa Vue tidak secara otomatis meneruskan `item` ke dalam komponen adalah karena itu membuat komponen erat digabungkan dengan sebagaimana `v-for` berfungsi. Menjadikannya eksplisit mengenai darimana datanya berasal membuat komponen dapat digunakan kembali dalam situasi lain.
 
-Here's a complete example of a simple todo list:
+Berikut adalah contoh lengkap pembuatan _todo list_ sederhana:
 
 ```html
 <div id="todo-list-example">
@@ -315,29 +305,29 @@ const app = Vue.createApp({
       todos: [
         {
           id: 1,
-          title: 'Do the dishes'
+          title: 'Do the dishes',
         },
         {
           id: 2,
-          title: 'Take out the trash'
+          title: 'Take out the trash',
         },
         {
           id: 3,
-          title: 'Mow the lawn'
-        }
+          title: 'Mow the lawn',
+        },
       ],
-      nextTodoId: 4
+      nextTodoId: 4,
     }
   },
   methods: {
     addNewTodo() {
       this.todos.push({
         id: this.nextTodoId++,
-        title: this.newTodoText
+        title: this.newTodoText,
       })
       this.newTodoText = ''
-    }
-  }
+    },
+  },
 })
 
 app.component('todo-item', {
@@ -348,7 +338,7 @@ app.component('todo-item', {
     </li>
   `,
   props: ['title'],
-  emits: ['remove']
+  emits: ['remove'],
 })
 
 app.mount('#todo-list-example')

@@ -68,7 +68,8 @@ In most cases, the preferred way to create a webpack build with minimal configur
 
 ## CLI
 
-Vue menyediakan [Antarmuka Perintah Sebaris (CLI) Resmi](https://github.com/vuejs/vue-cli) untuk perancah cepat Aplikasi Laman Tunggal (_Single Page Applications_). Vue CLI menyediakan alur kerja _frontend_ modern yang lengkap. Hanya membutuhkan beberapa menit untuk bangun dan berjalan dengan _hot-reload_, _lint-ketika-berkas-disimpan_, _build_ siap-produksi. Lihat [dokumentasi Vue CLI](https://cli.vuejs.org) untuk lebih detail.
+Vue provides an [official CLI](https://cli.vuejs.org/) for quickly scaffolding ambitious Single Page Applications. It provides batteries-included build setups for a modern frontend workflow. It takes only a few minutes to get up and running with hot-reload, lint-on-save, and production-ready builds.
+
 
 :::tip
 CLI mengasumsikan pengetahuan sebelumnya tentang Node.js dan alat pembangun terkait. Jika Anda baru dalam Vue atau perangkat pembangun _front-end_, kami sangat menyarankan pergi ke [petunjuk](./introduction.html) tanpa perangkat pembangun apapun sebelum menggunakan CLI.
@@ -90,7 +91,7 @@ vue upgrade --next
 
 ## Vite
 
-[Vite](https://github.com/vitejs/vite) is a web development build tool that allows for lightning fast serving of code due to its native ES Module import approach.
+[Vite](https://vitejs.dev/) is a web development build tool that allows for lightning fast serving of code due to its native ES Module import approach.
 
 Proyek Vue dapat diatur secara cepat dengan Vite dengan menjalankan perintah berikut di terminal Anda.
 
