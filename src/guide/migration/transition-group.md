@@ -6,13 +6,13 @@ badges:
 
 # {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
 
-## Overview
+## Gambaran Umum
 
-`<transition-group>` no longer renders a root element by default, but can still create one with the `tag` prop.
+`<transition-group>` tidak lagi merender sebuah element root secara default, tetapi masih dapat membuatnya menggunakan prop `tag`.
 
-## 2.x Syntax
+## 2.x Sintaksis
 
-In Vue 2, `<transition-group>`, like other custom components, needed a root element, which by default was a `<span>` but was customizable via the `tag` prop.
+Pada Vue 2, `<transition-group>`, seperti komponen-komponen kustom lainnya, membutuhkan sebuah element root, dimana secara default adalah sebuah `<span>` tetapi dikostumisasi menggunakan prop `tag`.
 
 ```html
 <transition-group tag="ul">
@@ -22,12 +22,12 @@ In Vue 2, `<transition-group>`, like other custom components, needed a root elem
 </transition-group>
 ```
 
-## 3.x Syntax
+## 3.x Sintaksis
 
-In Vue 3, we have [fragment support](/guide/migration/fragments.html), so components no longer _need_ a root node. Consequently, `<transition-group>` no longer renders one by default.
+Pada Vue 3, Kami mempunyai [fragment support](/guide/migration/fragments.html), sehingga komponen-komponen tidak lagi _membutuhkan_ sebuah node root. Sehingga, `<transition-group>` tidak lagi merendernya secara default.
 
-- If you already have the `tag` prop defined in your Vue 2 code, like in the example above, everything will work as before
-- If you didn't have one defined _and_ your styling or other behaviors relied on the presence of the `<span>` root element to work properly, simply add `tag="span"` to the `<transition-group>`:
+- Jika Anda telah mempunyai prop `tag` terdefinisikan pada code Vue 2 Anda, seperti contoh diatas, semuanya akan bekerja normal seperti sebelumnya
+- Jika ANda belum mendefenisikan _dan_ gaya Anda dan perilaku lainnya mengandalkan kepada adanya element root`<span>` untuk bekerja, Sederhananya, tambahkan `tag="span"` di `<transition-group>`:
 
 ```html
 <transition-group tag="span">
@@ -39,7 +39,7 @@ In Vue 3, we have [fragment support](/guide/migration/fragments.html), so compon
 
 [Migration build flag: `TRANSITION_GROUP_ROOT`](migration-build.html#compat-configuration)
 
-## See also
+## Lihat Juga
 
 - [Some transition classes got a rename](/guide/migration/transition.html)
 - [`<Transition>` as a root can no longer be toggled from the outside](/guide/migration/transition-as-root.html)
